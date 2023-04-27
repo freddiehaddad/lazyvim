@@ -109,7 +109,7 @@ return {
         provider = function()
           local status = git_diff("changed")
           if status then
-            return " " .. icons.git.changed .. status .. " "
+            return " " .. icons.git.modified .. status .. " "
           end
           return ""
         end,
