@@ -1,7 +1,7 @@
 return {
   {
     "freddiehaddad/feline.nvim",
-    dependencies = { "freddiehaddad/base16-nvim", "lewis6991/gitsigns.nvim" },
+    dependencies = { "freddiehaddad/base16-nvim", "lewis6991/gitsigns.nvim", "folke/noice.nvim" },
     config = function()
       local feline = require("feline")
       local separators = require("feline.defaults").statusline.separators.default_value
@@ -231,6 +231,19 @@ return {
       })
 
       -- right
+      table.insert(components.active[2], {
+        provider = function()
+          local mode = require("noice").api.status.mode.get()
+          if mode then
+            return mode
+          else
+            return ""
+          end
+        end,
+        hl = { fg = "base04", bg = "base01" },
+        right_sep = { str = " ", hl = { fg = "base04", bg = "base01" } },
+      })
+
       table.insert(components.active[2], {
         provider = function()
           return " " .. vi_mode.get_vim_mode() .. " "
