@@ -70,6 +70,13 @@ return {
             },
           },
         },
+        yamlls = {
+          settings = {
+            yaml = {
+              keyOrdering = false,
+            },
+          },
+        },
       },
     },
   },
