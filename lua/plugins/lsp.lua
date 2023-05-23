@@ -46,6 +46,9 @@ return {
         -- Python
         nls.builtins.formatting.autopep8,
 
+        -- Terraform
+        nls.builtins.formatting.terraform_fmt,
+
         -- YAML
         nls.builtins.formatting.yamlfmt,
       })
