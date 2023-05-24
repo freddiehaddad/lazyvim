@@ -28,15 +28,6 @@ local update_theme = function()
 end
 
 return {
-  -- mason.nvim integration
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    dependencies = "mason.nvim",
-    cmd = { "DapInstall", "DapUninstall" },
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { "delve" })
-    end,
-  },
   {
     "rcarriga/nvim-dap-ui",
     dependencies = "freddiehaddad/base16-nvim",
