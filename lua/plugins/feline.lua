@@ -1,13 +1,30 @@
 return {
   {
     "freddiehaddad/feline.nvim",
-    dependencies = { "freddiehaddad/base16-nvim", "lewis6991/gitsigns.nvim", "folke/noice.nvim" },
+    dependencies = { "lewis6991/gitsigns.nvim", "folke/noice.nvim" },
     config = function()
       local feline = require("feline")
       local separators = require("feline.defaults").statusline.separators.default_value
       local vi_mode = require("feline.providers.vi_mode")
 
       local icons = require("lazyvim.config").icons
+      local colors = require("catppuccin.palettes").get_palette()
+
+      local theme = {
+        fg = colors.text,
+        bg = colors.crust,
+        black = colors.crust,
+        skyblue = colors.sky,
+        cyan = colors.teal,
+        green = colors.green,
+        oceanblue = colors.blue,
+        magenta = colors.mauve,
+        orange = colors.peach,
+        red = colors.red,
+        violet = colors.lavender,
+        white = colors.text,
+        yellow = colors.yellow,
+      }
 
       local git_diff = function(type)
         ---@diagnostic disable-next-line: undefined-field
@@ -16,42 +33,6 @@ return {
           return tostring(gsd[type])
         end
         return nil
-      end
-
-      local update_theme = function()
-        local theme = {
-          fg = "#" .. vim.g.base16_gui05,
-          bg = "#" .. vim.g.base16_gui00,
-          base00 = "#" .. vim.g.base16_gui00, -- black
-          base01 = "#" .. vim.g.base16_gui01,
-          base02 = "#" .. vim.g.base16_gui02,
-          base03 = "#" .. vim.g.base16_gui03,
-          base04 = "#" .. vim.g.base16_gui04,
-          base05 = "#" .. vim.g.base16_gui05, -- white
-          base06 = "#" .. vim.g.base16_gui06,
-          base07 = "#" .. vim.g.base16_gui07, -- bright white
-          base08 = "#" .. vim.g.base16_gui08, -- red
-          base09 = "#" .. vim.g.base16_gui09,
-          base0A = "#" .. vim.g.base16_gui0A, -- yellow
-          base0B = "#" .. vim.g.base16_gui0B, -- green
-          base0C = "#" .. vim.g.base16_gui0C, -- cyan
-          base0D = "#" .. vim.g.base16_gui0D, -- blue
-          base0E = "#" .. vim.g.base16_gui0E, -- magenta
-          base0F = "#" .. vim.g.base16_gui0F,
-          black = "#" .. vim.g.base16_gui00,
-          skyblue = "#" .. vim.g.base16_gui0D,
-          cyan = "#" .. vim.g.base16_gui0C,
-          green = "#" .. vim.g.base16_gui0B,
-          oceanblue = "#" .. vim.g.base16_gui0D,
-          magenta = "#" .. vim.g.base16_gui0E,
-          orange = "#" .. vim.g.base16_gui0A,
-          red = "#" .. vim.g.base16_gui08,
-          violet = "#" .. vim.g.base16_gui0E,
-          white = "#" .. vim.g.base16_gui05,
-          yellow = "#" .. vim.g.base16_gui0A,
-        }
-
-        feline.use_theme(theme)
       end
 
       local components = {
@@ -69,7 +50,7 @@ return {
           end
           return "  "
         end,
-        hl = { fg = "base0A", bg = "base00" },
+        hl = { fg = colors.blue, bg = colors.base },
       })
 
       table.insert(components.active[1], {
@@ -81,11 +62,11 @@ return {
           end
           return ""
         end,
-        hl = { fg = "base04", bg = "base02" },
+        hl = { fg = colors.text, bg = colors.mantle },
         left_sep = {
           always_visible = true,
           str = separators.right_filled,
-          hl = { fg = "base00", bg = "base02" },
+          hl = { fg = colors.base, bg = colors.mantle },
         },
       })
 
@@ -97,11 +78,11 @@ return {
           end
           return ""
         end,
-        hl = { fg = "base00", bg = "base0B" },
+        hl = { fg = colors.base, bg = colors.green },
         left_sep = {
           always_visible = true,
           str = separators.right_filled,
-          hl = { fg = "base02", bg = "base0B" },
+          hl = { fg = colors.mantle, bg = colors.green },
         },
       })
 
@@ -113,11 +94,11 @@ return {
           end
           return ""
         end,
-        hl = { fg = "base00", bg = "base0A" },
+        hl = { fg = colors.crust, bg = colors.yellow },
         left_sep = {
           always_visible = true,
           str = separators.right_filled,
-          hl = { fg = "base0B", bg = "base0A" },
+          hl = { fg = colors.green, bg = colors.yellow },
         },
       })
 
@@ -129,11 +110,11 @@ return {
           end
           return ""
         end,
-        hl = { fg = "base00", bg = "base08" },
+        hl = { fg = colors.base, bg = colors.red },
         left_sep = {
           always_visible = true,
           str = separators.right_filled,
-          hl = { fg = "base0A", bg = "base08" },
+          hl = { fg = colors.yellow, bg = colors.red },
         },
       })
 
@@ -145,11 +126,11 @@ return {
           end
           return ""
         end,
-        hl = { fg = "base04", bg = "base02" },
+        hl = { fg = colors.text, bg = colors.mantle },
         left_sep = {
           always_visible = true,
           str = separators.right_filled,
-          hl = { fg = "base08", bg = "base02" },
+          hl = { fg = colors.red, bg = colors.mantle },
         },
       })
 
@@ -161,11 +142,11 @@ return {
           end
           return ""
         end,
-        hl = { fg = "base00", bg = "base08" },
+        hl = { fg = colors.base, bg = colors.red },
         left_sep = {
           always_visible = true,
           str = separators.right_filled,
-          hl = { fg = "base02", bg = "base08" },
+          hl = { fg = colors.mantle, bg = colors.red },
         },
       })
 
@@ -177,11 +158,11 @@ return {
           end
           return ""
         end,
-        hl = { fg = "base00", bg = "base0A" },
+        hl = { fg = colors.base, bg = colors.yellow },
         left_sep = {
           always_visible = true,
           str = separators.right_filled,
-          hl = { fg = "base08", bg = "base0A" },
+          hl = { fg = colors.red, bg = colors.yellow },
         },
       })
 
@@ -193,11 +174,11 @@ return {
           end
           return ""
         end,
-        hl = { fg = "base00", bg = "base0D" },
+        hl = { fg = colors.base, bg = colors.sky },
         left_sep = {
           always_visible = true,
           str = separators.right_filled,
-          hl = { fg = "base0A", bg = "base0D" },
+          hl = { fg = colors.yellow, bg = colors.sky },
         },
       })
 
@@ -209,11 +190,11 @@ return {
           end
           return ""
         end,
-        hl = { fg = "base00", bg = "base0E" },
+        hl = { fg = colors.base, bg = colors.teal },
         left_sep = {
           always_visible = true,
           str = separators.right_filled,
-          hl = { fg = "base0D", bg = "base0E" },
+          hl = { fg = colors.sky, bg = colors.teal },
         },
       })
 
@@ -222,11 +203,11 @@ return {
           name = "file_info",
           opts = { type = "full-path" },
         },
-        hl = { fg = "base04", bg = "base01" },
+        hl = { fg = colors.text, bg = colors.mantle },
         left_sep = {
           always_visible = true,
           str = separators.right_filled .. " ",
-          hl = { fg = "base0E", bg = "base01" },
+          hl = { fg = colors.teal, bg = colors.mantle },
         },
       })
 
@@ -240,8 +221,11 @@ return {
             return ""
           end
         end,
-        hl = { fg = "base04", bg = "base01" },
-        right_sep = { str = " ", hl = { fg = "base04", bg = "base01" } },
+        hl = { fg = colors.text, bg = colors.mantle },
+        right_sep = {
+          str = " ",
+          hl = { fg = colors.text, bg = colors.mantle },
+        },
       })
 
       table.insert(components.active[2], {
@@ -249,12 +233,12 @@ return {
           return " " .. vi_mode.get_vim_mode() .. " "
         end,
         hl = function()
-          return { fg = "base00", bg = vi_mode.get_mode_color() }
+          return { fg = colors.crust, bg = vi_mode.get_mode_color() }
         end,
         left_sep = {
           str = separators.slant_right_2,
           hl = function()
-            return { fg = "base01", bg = vi_mode.get_mode_color() }
+            return { fg = colors.mantle, bg = vi_mode.get_mode_color() }
           end,
         },
       })
@@ -264,16 +248,16 @@ return {
           name = "position",
           opts = { padding = true },
         },
-        hl = { fg = "base00", bg = "base0A" },
+        hl = { fg = colors.peach, bg = colors.crust },
         left_sep = {
           str = separators.slant_right_2 .. " ",
           hl = function()
-            return { fg = vi_mode.get_mode_color(), bg = "base0A" }
+            return { fg = vi_mode.get_mode_color(), bg = colors.crust }
           end,
         },
         right_sep = {
           str = " ",
-          hl = { fg = "base00", bg = "base0A" },
+          hl = { fg = colors.peach, bg = colors.crust },
         },
       })
 
@@ -282,13 +266,11 @@ return {
           name = "scroll_bar",
           opts = { reverse = true },
         },
-        hl = { fg = "base09", bg = "base0A" },
+        hl = { fg = colors.peach, bg = colors.crust },
       })
 
       feline.setup({ components = components })
-      update_theme()
-
-      require("base16-nvim").listen(update_theme)
+      feline.use_theme(theme)
     end,
   },
 }

@@ -1,22 +1,30 @@
 return {
   {
-    "freddiehaddad/base16-nvim",
-    priority = 1000,
-    config = false,
+    "catppuccin/nvim",
+    name = "catppuccin",
+    opts = {
+      flavour = "mocha",
+      transparent_background = false,
+      dim_inactive = {
+        enabled = true, -- dims the background color of inactive window
+        shade = "dark",
+        percentage = 0.15, -- percentage of the shade to apply to the inactive window
+      },
+      no_italic = true, -- Force no italic
+      no_bold = true, -- Force no bold
+      no_underline = true, -- Force no underline
+      integrations = {
+        dap = {
+          enabled = true,
+          enable_ui = true, -- enable nvim-dap-ui
+        },
+      },
+    },
   },
   {
     "LazyVim/LazyVim",
     opts = {
-      -- configure base16-nvim here to stop LazyVim from setting
-      -- its own colorscheme.
-      colorscheme = function()
-        local opts = {
-          hot_reload = {
-            enabled = true,
-          },
-        }
-        require("base16-nvim").setup(opts)
-      end,
+      colorscheme = "catppuccin",
     },
   },
 }
