@@ -1,6 +1,7 @@
 return {
   {
-    "freddiehaddad/peanut",
+    "freddiehaddad/peanut.nvim",
+    name = "peanut",
     opts = {
       transparent_background = false,
       dim_inactive = {
