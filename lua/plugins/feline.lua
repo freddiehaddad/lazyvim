@@ -8,7 +8,7 @@ return {
       local vi_mode = require("feline.providers.vi_mode")
 
       local icons = require("lazyvim.config").icons
-      local colors = require("catppuccin.palettes").get_palette()
+      local colors = require("peanut.palettes").get_palette()
 
       local theme = {
         fg = colors.text,
@@ -62,11 +62,11 @@ return {
           end
           return ""
         end,
-        hl = { fg = colors.text, bg = colors.mantle },
+        hl = { fg = colors.text, bg = colors.surface1 },
         left_sep = {
           always_visible = true,
           str = separators.right_filled,
-          hl = { fg = colors.base, bg = colors.mantle },
+          hl = { fg = colors.base, bg = colors.surface1 },
         },
       })
 
@@ -82,7 +82,7 @@ return {
         left_sep = {
           always_visible = true,
           str = separators.right_filled,
-          hl = { fg = colors.mantle, bg = colors.green },
+          hl = { fg = colors.surface1, bg = colors.green },
         },
       })
 
@@ -94,7 +94,7 @@ return {
           end
           return ""
         end,
-        hl = { fg = colors.crust, bg = colors.yellow },
+        hl = { fg = colors.mantle, bg = colors.yellow },
         left_sep = {
           always_visible = true,
           str = separators.right_filled,
@@ -126,11 +126,11 @@ return {
           end
           return ""
         end,
-        hl = { fg = colors.text, bg = colors.mantle },
+        hl = { fg = colors.text, bg = colors.surface1 },
         left_sep = {
           always_visible = true,
           str = separators.right_filled,
-          hl = { fg = colors.red, bg = colors.mantle },
+          hl = { fg = colors.red, bg = colors.surface1 },
         },
       })
 
@@ -146,7 +146,7 @@ return {
         left_sep = {
           always_visible = true,
           str = separators.right_filled,
-          hl = { fg = colors.mantle, bg = colors.red },
+          hl = { fg = colors.surface1, bg = colors.red },
         },
       })
 
@@ -203,11 +203,11 @@ return {
           name = "file_info",
           opts = { type = "full-path" },
         },
-        hl = { fg = colors.text, bg = colors.mantle },
+        hl = { fg = colors.text, bg = colors.surface0 },
         left_sep = {
           always_visible = true,
           str = separators.right_filled .. " ",
-          hl = { fg = colors.teal, bg = colors.mantle },
+          hl = { fg = colors.teal, bg = colors.surface0 },
         },
       })
 
@@ -216,15 +216,16 @@ return {
         provider = function()
           local mode = require("noice").api.status.mode.get()
           if mode then
-            return mode
+            return " " .. mode .. " "
           else
             return ""
           end
         end,
-        hl = { fg = colors.text, bg = colors.mantle },
-        right_sep = {
-          str = " ",
-          hl = { fg = colors.text, bg = colors.mantle },
+        hl = { fg = colors.text, bg = colors.surface1 },
+        left_sep = {
+          always_visible = true,
+          str = separators.slant_right_2,
+          hl = { fg = colors.surface0, bg = colors.surface1 },
         },
       })
 
@@ -233,12 +234,12 @@ return {
           return " " .. vi_mode.get_vim_mode() .. " "
         end,
         hl = function()
-          return { fg = colors.crust, bg = vi_mode.get_mode_color() }
+          return { fg = colors.surface1, bg = vi_mode.get_mode_color() }
         end,
         left_sep = {
           str = separators.slant_right_2,
           hl = function()
-            return { fg = colors.mantle, bg = vi_mode.get_mode_color() }
+            return { fg = colors.surface1, bg = vi_mode.get_mode_color() }
           end,
         },
       })
@@ -248,16 +249,16 @@ return {
           name = "position",
           opts = { padding = true },
         },
-        hl = { fg = colors.peach, bg = colors.crust },
+        hl = { fg = colors.peach, bg = colors.surface1 },
         left_sep = {
           str = separators.slant_right_2 .. " ",
           hl = function()
-            return { fg = vi_mode.get_mode_color(), bg = colors.crust }
+            return { fg = vi_mode.get_mode_color(), bg = colors.surface1 }
           end,
         },
         right_sep = {
           str = " ",
-          hl = { fg = colors.peach, bg = colors.crust },
+          hl = { fg = colors.peach, bg = colors.surface1 },
         },
       })
 
@@ -266,7 +267,7 @@ return {
           name = "scroll_bar",
           opts = { reverse = true },
         },
-        hl = { fg = colors.peach, bg = colors.crust },
+        hl = { fg = colors.peach, bg = colors.surface1 },
       })
 
       feline.setup({ components = components })
