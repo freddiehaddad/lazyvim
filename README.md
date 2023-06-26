@@ -5,13 +5,11 @@ My customized Neovim setup built on top of LazyVim.
 Some plugins were disabled:
 
 - bufferline
-- catppuccin
 - lualine
 - tokyonight
 
 New plugins were added:
 
-- base16-nvim
 - feline
 - tmux
 - undotree
