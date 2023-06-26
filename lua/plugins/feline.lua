@@ -8,7 +8,7 @@ return {
       local vi_mode = require("feline.providers.vi_mode")
 
       local icons = require("lazyvim.config").icons
-      local colors = require("peanut.palettes").get_palette()
+      local colors = require("catppuccin.palettes").get_palette()
 
       local theme = {
         fg = colors.text,
